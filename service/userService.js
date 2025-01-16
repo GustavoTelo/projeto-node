@@ -12,9 +12,18 @@ const registerUserService = async (username, password) => {
     return user;
 };
 
+const loginUserService = async (username, password) => {
+    if (!username && !password)  throw new Error ('Username and password is required');
+    
+    const user = await User.findOne({ where: { username: 'telo'}});
+    console.log(user)
+    
+    
+};
 
+// verificar se o user tem uma conta
 
-
+// verificar se a senha do user esta correta
 module.exports = {
     registerUserService,
 };

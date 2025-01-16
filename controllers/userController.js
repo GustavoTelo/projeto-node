@@ -11,7 +11,18 @@ const registerUserController = async (req, res) => {
     };
 };
 
+const loginUserController = async (req, res) => {
+    const { username, password } = req.body;
+
+    try{
+        const user = await loginUserService(username, password);
+        return res.status(200).json({message: 'User login successfully', user: user})
+    } catch (err) {
+        return res.status(500).json({error: err.message});
+    };
+};
 
 module.exports = {
-    registerUserController
+    registerUserController,
+    loginUserController
 }
