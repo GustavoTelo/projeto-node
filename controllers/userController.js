@@ -1,4 +1,4 @@
-const { registerUserService } = require('../service/userService');
+const { registerUserService, loginUserService } = require('../service/userService');
 
 const registerUserController = async (req, res) => {
     const { username, password } = req.body;
@@ -16,7 +16,7 @@ const loginUserController = async (req, res) => {
 
     try{
         const user = await loginUserService(username, password);
-        return res.status(200).json({message: 'User login successfully', user: user})
+        return res.status(200).json({message: 'User logged in successfully', user: user})
     } catch (err) {
         return res.status(500).json({error: err.message});
     };
